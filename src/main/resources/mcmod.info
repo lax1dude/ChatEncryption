@@ -1,0 +1,16 @@
+[
+{
+  "modid": "chatencryption",
+  "name": "ChatEncryption",
+  "description": "Do you want privacy while chatting with your friends on a Minecraft server? Try this mod. The system was originally designed for a hacked client I work on, but I noticed its really useful even when you aren't trying to keep an admin from listening in on your conversation...",
+  "version": "1.0",
+  "mcversion": "1.11.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["LAX1DUDE"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
