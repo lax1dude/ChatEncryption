@@ -5,7 +5,6 @@ import java.util.Map;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 
 @IFMLLoadingPlugin.MCVersion("1.11.2")
-@IFMLLoadingPlugin.TransformerExclusions({"com.giacun.LAX1DUDE.chatencryption"})
 public class ChatEncryptionASMPlugin implements IFMLLoadingPlugin {
 
 	@Override
@@ -24,8 +23,7 @@ public class ChatEncryptionASMPlugin implements IFMLLoadingPlugin {
 	}
 
 	@Override
-	public void injectData(Map<String, Object> data) {
-	}
+	public void injectData(Map<String, Object> data) {}
 
 	@Override
 	public String getAccessTransformerClass() {

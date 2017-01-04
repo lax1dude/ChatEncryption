@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = "chatencryption", name="ChatEncryption", version="1.0", clientSideOnly=true, serverSideOnly=false, canBeDeactivated=true, guiFactory="com.giacun.LAX1DUDE.chatencryption.ChatEncryptionGuiFactory")
+@Mod(modid = "chatencryption", name="ChatEncryption", version="1.0", clientSideOnly=true, guiFactory="com.giacun.LAX1DUDE.chatencryption.ChatEncryptionGuiFactory")
 public class ChatEncryption {
 	
 	public static final Logger LOGGER = LogManager.getLogger("ChatEncryption");
