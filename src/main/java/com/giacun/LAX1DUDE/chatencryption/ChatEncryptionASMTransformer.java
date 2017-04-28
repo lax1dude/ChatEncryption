@@ -1,22 +1,27 @@
 package com.giacun.LAX1DUDE.chatencryption;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
-import org.objectweb.asm.Label;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.LabelNode;
 import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.VarInsnNode;
 
 import net.minecraft.launchwrapper.IClassTransformer;
+import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 
 public class ChatEncryptionASMTransformer implements IClassTransformer {
-
+	
+	public static final Logger TransformLogger = LogManager.getLogger("ChatEncryption/Transformer");
+	
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
+	
 		if("net.minecraft.client.entity.EntityPlayerSP".equals(transformedName)){
 			boolean obfuscated = !name.equals(transformedName);
 			ClassNode nodeler = new ClassNode();
@@ -54,6 +59,7 @@ public class ChatEncryptionASMTransformer implements IClassTransformer {
 			nodeler.accept(writeler);
 			return writeler.toByteArray();
 		}
+	
 		return basicClass;
 	}
 }

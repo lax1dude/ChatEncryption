@@ -4,7 +4,10 @@ import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.input.Keyboard;
 
+import net.minecraft.client.settings.KeyBinding;
+import net.minecraftforge.client.settings.KeyBindingMap;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.ConfigElement;
@@ -12,6 +15,7 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import net.minecraftforge.common.config.Property.Type;
 import net.minecraftforge.fml.client.config.IConfigElement;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -30,6 +34,8 @@ public class ChatEncryption {
 	public static Configuration cfg;
 
 	public static ArrayList<IConfigElement> cfgList = new ArrayList();
+	
+	public static final KeyBinding key = new KeyBinding("Open chat with enc:; entered", Keyboard.KEY_PERIOD, "key.categories.multiplayer");
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
@@ -50,8 +56,9 @@ public class ChatEncryption {
 	}
 	
 	@EventHandler
-    public void load(FMLInitializationEvent event)
-    {
+    public void load(FMLInitializationEvent event){
+		ClientRegistry.registerKeyBinding(key);
+		
 		MinecraftForge.EVENT_BUS.register(new ChatEncryptionHooks());
 		LOGGER.info("Thanks for using ChatEncryption!");
     }

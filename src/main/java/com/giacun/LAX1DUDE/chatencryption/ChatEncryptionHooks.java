@@ -1,10 +1,14 @@
 package com.giacun.LAX1DUDE.chatencryption;
 
+import java.lang.reflect.Field;
+
 import org.apache.commons.lang3.ArrayUtils;
 
 import com.giacun.LAX1DUDE.chatencryption.util.EncryptUtils;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiChat;
+import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.text.Style;
@@ -14,6 +18,7 @@ import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.util.text.event.HoverEvent.Action;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.RenderTickEvent;
 
@@ -23,6 +28,25 @@ public class ChatEncryptionHooks {
 	public static boolean top = true;
 	public static boolean left = true;
 	public static float scale = 1.0F;
+	
+	@SubscribeEvent
+	public void keypressed(KeyInputEvent ev){
+		if(Minecraft.getMinecraft().currentScreen == null && ChatEncryption.key.isKeyDown()){
+			GuiChat chat = new GuiChat("enc:;");
+			Minecraft.getMinecraft().displayGuiScreen(chat);
+			
+			Field chatField;
+			try {
+				try{
+					chatField = GuiChat.class.getDeclaredField("inputField");
+				}catch(Throwable t){
+					chatField = GuiChat.class.getDeclaredField("field_146415_a");
+				}
+				chatField.setAccessible(true);
+				((GuiTextField)chatField.get(chat)).setCursorPosition(4);
+			}catch(Throwable t){t.printStackTrace();}
+		}
+	}
 
 	public static String encrypt(String str) {
 		String orig = str;
@@ -108,7 +132,7 @@ public class ChatEncryptionHooks {
 			String text2 = "Go to 'Mod Options > ChatEncryption' in the escape menu to change";
 			int t1 = mc.fontRendererObj.getStringWidth(text1);
 			int t2 = (int) (mc.fontRendererObj.getStringWidth(text2) * 0.5F) + 1;
-			float scale = 0.5F * ChatEncryptionHooks.scale;
+			float scale = 0.75F * ChatEncryptionHooks.scale;
 			
 			GlStateManager.translate(left ? 0 : res.getScaledWidth() - (t2 * scale) - 1, top ? 0 : res.getScaledHeight() - (16 * scale) - 1, 0.0F);
 
