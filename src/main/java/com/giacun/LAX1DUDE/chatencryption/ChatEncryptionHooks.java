@@ -130,18 +130,18 @@ public class ChatEncryptionHooks {
 			
 			String text1 = "ChatEncryption Key: "+key;
 			String text2 = "Go to 'Mod Options > ChatEncryption' in the escape menu to change";
-			int t1 = mc.fontRendererObj.getStringWidth(text1);
-			int t2 = (int) (mc.fontRendererObj.getStringWidth(text2) * 0.5F) + 1;
+			int t1 = mc.fontRenderer.getStringWidth(text1);
+			int t2 = (int) (mc.fontRenderer.getStringWidth(text2) * 0.5F) + 1;
 			float scale = 0.75F * ChatEncryptionHooks.scale;
 			
 			GlStateManager.translate(left ? 0 : res.getScaledWidth() - (t2 * scale) - 1, top ? 0 : res.getScaledHeight() - (16 * scale) - 1, 0.0F);
 
 			GlStateManager.pushMatrix();
 			GlStateManager.scale(scale, scale, 1.0F);
-			mc.fontRendererObj.drawString(text1, left ? 1 : t2 - t1 + 1, 1, 0xEEDD00);
+			mc.fontRenderer.drawString(text1, left ? 1 : t2 - t1 + 1, 1, 0xEEDD00);
 			GlStateManager.pushMatrix();
 			GlStateManager.scale(0.5F, 0.5F, 1.0F);
-			mc.fontRendererObj.drawString(text2, 2, 20, 0xEEDD00);
+			mc.fontRenderer.drawString(text2, 2, 20, 0xEEDD00);
 			GlStateManager.popMatrix();
 			GlStateManager.popMatrix();
 			
