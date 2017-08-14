@@ -60,7 +60,7 @@ public class ChatEncryption {
 		ClientRegistry.registerKeyBinding(key);
 		
 		MinecraftForge.EVENT_BUS.register(new ChatEncryptionHooks());
-		LOGGER.info("Thanks for using ChatEncryption!");
+		LOGGER.info("yee.");
     }
 	
 	@EventHandler

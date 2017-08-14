@@ -102,12 +102,24 @@ public class ChatEncryptionHooks {
 					}
 					str = str.substring(0, index).concat(str.substring(index).replace("dnc:"+str2+";", str3));
 				}
+				
+				String wrap = "";
+				
+				int i = 0;
+				
+				for(char l : orig.toCharArray()) {
+					i++;
+					if(i > 40) {
+						wrap += "\n";
+						i = 0;
+					}
+					wrap = (wrap + l);
+				}
+				
 				c.setMessage(new TextComponentString(str+" ").appendSibling(new TextComponentString("[Decrypted]")
 						.setStyle(new Style().setColor(TextFormatting.GOLD)
-						.setHoverEvent(new HoverEvent(Action.SHOW_TEXT, new TextComponentString("Original Text: "+orig.substring(0, orig.length() >= 39 ? 40 : orig.length())+"...\n")
-								.setStyle(new Style().setColor(TextFormatting.DARK_GREEN))
-								.appendSibling(new TextComponentString("The decryption may have interfered with\n")
-										.setStyle(new Style().setItalic(Boolean.TRUE).setColor(TextFormatting.BLUE)).appendSibling(new TextComponentString("certain aspects of the text formatting"))))))));
+						.setHoverEvent(new HoverEvent(Action.SHOW_TEXT, new TextComponentString(wrap)
+								.setStyle(new Style().setColor(TextFormatting.LIGHT_PURPLE)))))));
 			}
 			catch(Throwable t){
 				t.printStackTrace();
