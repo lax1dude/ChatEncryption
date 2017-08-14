@@ -1,4 +1,4 @@
-package com.giacun.LAX1DUDE.chatencryption;
+package me.scovel.chatencryption;
 
 import java.util.ArrayList;
 

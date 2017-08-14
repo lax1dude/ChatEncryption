@@ -1,4 +1,4 @@
-package com.giacun.LAX1DUDE.chatencryption;
+package me.scovel.chatencryption;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -25,7 +25,7 @@ public class ChatEncryptionASMPlugin implements IFMLLoadingPlugin {
 			Field f = Loader.class.getDeclaredField("minecraftDir");
 			f.setAccessible(true);
 			File mcd = (File) f.get(null);
-			File out = new File(mcd, "mods\\ChatEncryption-1.0-DATA.jar");
+			File out = new File(mcd, "mods\\ChatEncryption-1.1-DATA.jar");
 			if(!out.exists()){
 				ChatEncryptionASMTransformer.TransformLogger.info("Extracting Actual Mod...");
 				InputStream stream = null;

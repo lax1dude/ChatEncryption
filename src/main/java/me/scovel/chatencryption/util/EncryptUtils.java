@@ -1,4 +1,4 @@
-package com.giacun.LAX1DUDE.chatencryption.util;
+package me.scovel.chatencryption.util;
 
 import java.security.InvalidKeyException;
 import java.security.Key;

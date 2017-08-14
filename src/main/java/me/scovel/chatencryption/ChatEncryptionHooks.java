@@ -1,11 +1,10 @@
-package com.giacun.LAX1DUDE.chatencryption;
+package me.scovel.chatencryption;
 
 import java.lang.reflect.Field;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-import com.giacun.LAX1DUDE.chatencryption.util.EncryptUtils;
-
+import me.scovel.chatencryption.util.EncryptUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.GuiTextField;

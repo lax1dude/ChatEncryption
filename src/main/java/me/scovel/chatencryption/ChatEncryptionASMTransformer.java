@@ -1,4 +1,4 @@
-package com.giacun.LAX1DUDE.chatencryption;
+package me.scovel.chatencryption;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
