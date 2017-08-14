@@ -43,17 +43,21 @@ public class EncryptUtils {
     }
 
     public static String toStr(byte[] bytes){
-    	String str = Integer.toHexString(Byte.toUnsignedInt(bytes[0]));
-    	for(int i = 1; i < bytes.length; i++){
-    		str = str.concat("|").concat(Integer.toHexString(Byte.toUnsignedInt(bytes[i])));
+    	String str = "";
+    	for(int i = 0; i < bytes.length; i++){
+    		String str2 = Integer.toHexString(Byte.toUnsignedInt(bytes[i]));
+    		if(str2.length() == 1) {
+    			str2 = "0".concat(str2);
+    		}
+    		str = str.concat(str2);
     	}
     	return str;
     }
     public static byte[] fromStr(String str){
-    	String[] str2 = str.split("\\|");
-    	byte[] bytes = new byte[0];
-    	for(int i = 0; i < str2.length; i++){
-    		bytes = ArrayUtils.add(bytes, (byte)Integer.valueOf(str2[i], 16).intValue());
+    	char[] chars = str.toCharArray();
+    	byte[] bytes = new byte[chars.length / 2];
+    	for(int i = 0; i < chars.length; i += 2) {
+    		bytes[i / 2] = (byte)Integer.valueOf(new String(new char[] {chars[i], chars[i+1]}), 16).intValue();
     	}
     	return bytes;
     }

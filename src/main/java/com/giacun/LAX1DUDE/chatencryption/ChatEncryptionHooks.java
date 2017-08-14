@@ -101,7 +101,6 @@ public class ChatEncryptionHooks {
 						Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(new TextComponentString("Decryption failed: "+e.toString()+". Check your console for more info"));
 						return;
 					}
-					System.out.println(str3);
 					str = str.substring(0, index).concat(str.substring(index).replace("dnc:"+str2+";", str3));
 				}
 				c.setMessage(new TextComponentString(str+" ").appendSibling(new TextComponentString("[Decrypted]")
