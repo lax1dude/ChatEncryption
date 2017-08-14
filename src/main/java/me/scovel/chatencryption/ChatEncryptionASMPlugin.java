@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.discovery.ModDiscoverer;
 import net.minecraftforge.fml.relauncher.FMLRelaunchLog;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 
-@IFMLLoadingPlugin.MCVersion("1.12")
+@IFMLLoadingPlugin.MCVersion("1.12.1")
 public class ChatEncryptionASMPlugin implements IFMLLoadingPlugin {
 	
 	public ChatEncryptionASMPlugin(){
@@ -25,7 +25,7 @@ public class ChatEncryptionASMPlugin implements IFMLLoadingPlugin {
 			Field f = Loader.class.getDeclaredField("minecraftDir");
 			f.setAccessible(true);
 			File mcd = (File) f.get(null);
-			File out = new File(mcd, "mods\\ChatEncryption-1.1-DATA.jar");
+			File out = new File(mcd, "mods\\ChatEncryption.data.jar");
 			if(!out.exists()){
 				ChatEncryptionASMTransformer.TransformLogger.info("Extracting Actual Mod...");
 				InputStream stream = null;
@@ -45,6 +45,9 @@ public class ChatEncryptionASMPlugin implements IFMLLoadingPlugin {
 		        } catch (IOException ex) {
 		            throw ex;
 		        } finally {
+		        	if(stream != null) {
+		        		stream.close();
+		        	}
 		            stream.close();
 		            resStreamOut.close();
 		        }
@@ -61,7 +64,7 @@ public class ChatEncryptionASMPlugin implements IFMLLoadingPlugin {
 	
 	@Override
 	public String[] getASMTransformerClass() {
-		return new String[]{"com.giacun.LAX1DUDE.chatencryption.ChatEncryptionASMTransformer"};
+		return new String[]{"me.scovel.chatencryption.ChatEncryptionASMTransformer"};
 	}
 
 	@Override

@@ -44,7 +44,7 @@ public class ChatEncryptionASMTransformer implements IClassTransformer {
 					}
 					
 					if(instruction2 != null){
-						methodler.instructions.insert(instruction2, new MethodInsnNode(Opcodes.INVOKESTATIC, "com/giacun/LAX1DUDE/chatencryption/ChatEncryptionHooks", "encrypt", "(Ljava/lang/String;)Ljava/lang/String;", false));
+						methodler.instructions.insert(instruction2, new MethodInsnNode(Opcodes.INVOKESTATIC, "me/scovel/chatencryption/ChatEncryptionHooks", "encrypt", "(Ljava/lang/String;)Ljava/lang/String;", false));
 						ChatEncryption.LOGGER.info("Successfully injected bytecode into: "+name);
 					}	
 					else{
