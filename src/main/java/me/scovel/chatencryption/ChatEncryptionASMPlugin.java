@@ -32,7 +32,7 @@ public class ChatEncryptionASMPlugin implements IFMLLoadingPlugin {
 		        OutputStream resStreamOut = null;
 		        String jarFolder;
 		        try {
-		            stream = ChatEncryptionASMPlugin.class.getResourceAsStream("/ChatEncryption-1.0-DATA.jar");
+		            stream = ChatEncryptionASMPlugin.class.getResourceAsStream("/MODDATA");
 	
 		            int readBytes;
 		            byte[] buffer = new byte[4096];
