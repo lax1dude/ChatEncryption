@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 
 public class ChatEncryptionASMTransformer implements IClassTransformer {
 	
-	public static final Logger TransformLogger = LogManager.getLogger("ChatEncryption/Transformer");
+	public static final Logger TransformLogger = LogManager.getLogger("ChatEncryption");
 	
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] basicClass) {
@@ -45,11 +45,10 @@ public class ChatEncryptionASMTransformer implements IClassTransformer {
 					
 					if(instruction2 != null){
 						methodler.instructions.insert(instruction2, new MethodInsnNode(Opcodes.INVOKESTATIC, "me/scovel/chatencryption/ChatEncryptionHooks", "encrypt", "(Ljava/lang/String;)Ljava/lang/String;", false));
-						ChatEncryption.LOGGER.info("Successfully injected bytecode into: "+name);
+						TransformLogger.info("injected bytecode into: "+name);
 					}	
 					else{
-						ChatEncryption.LOGGER.fatal("Someone messed up the bytecode. ChatEncryption could not find the instruction to transform! Try uninstalling any new mods");
-						throw new RuntimeException("A flumpter messed up sendChatMessage's bytecode! Could not find instruction ALOAD_1!");
+						throw new RuntimeException("An eagler messed up sendChatMessage's bytecode! Could not find instruction ALOAD_1! Uninstall any new mods");
 					}
 					break;
 				}

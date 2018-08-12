@@ -23,10 +23,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = "chatencryption", name="ChatEncryption", version="1.1", clientSideOnly=true, guiFactory="me.scovel.chatencryption.ChatEncryptionGuiFactory")
+@Mod(modid = "chatencryption", name="ChatEncryption", version="1.2", clientSideOnly=true, guiFactory="me.scovel.chatencryption.ChatEncryptionGuiFactory")
 public class ChatEncryption {
-	
-	public static final Logger LOGGER = LogManager.getLogger("ChatEncryption");
 	
 	@Mod.Instance(value = "chatencryption")
 	public static ChatEncryption chatEncryption;
@@ -35,7 +33,7 @@ public class ChatEncryption {
 
 	public static ArrayList<IConfigElement> cfgList = new ArrayList();
 	
-	public static final KeyBinding key = new KeyBinding("Open chat with enc:; entered", Keyboard.KEY_PERIOD, "key.categories.multiplayer");
+	public static final KeyBinding key = new KeyBinding("Open chat with enc:;", Keyboard.KEY_PERIOD, "key.categories.multiplayer");
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
@@ -48,7 +46,7 @@ public class ChatEncryption {
     }
 	
 	public static void reloadCfg(){
-		ChatEncryptionHooks.key = cfg.getString("Encryption Key", "general", "uuvler", "Change this to whatever you and your friends want to use");
+		ChatEncryptionHooks.key = cfg.getString("Encryption Key", "general", "yeeing fudgli", "Change this to whatever you and your friends want to use");
 		ChatEncryptionHooks.show = cfg.getBoolean("Show Key", "general", true, "Show the current encryption key while ingame");
 		ChatEncryptionHooks.top = cfg.getBoolean("Display key at top of screen", "general", true, "");
 		ChatEncryptionHooks.left = cfg.getBoolean("Display key on the left side of screen", "general", true, "");
@@ -58,9 +56,7 @@ public class ChatEncryption {
 	@EventHandler
     public void load(FMLInitializationEvent event){
 		ClientRegistry.registerKeyBinding(key);
-		
 		MinecraftForge.EVENT_BUS.register(new ChatEncryptionHooks());
-		LOGGER.info("yee.");
     }
 	
 	@EventHandler
